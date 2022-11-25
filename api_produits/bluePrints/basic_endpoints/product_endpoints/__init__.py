@@ -62,8 +62,10 @@ def replaceProduct(id):
     request_data = json.loads(request.get_data())
     if product:
         try:
-            product.nom = request_data['nom']
-            product.stock = request_data['stock']
+            if request_data['nom']:
+                product.nom = request_data['nom']
+            if request_data['stock']:
+                product.stock = request_data['stock']
             db.session.commit()
             responseObject = {
                 'status': 'success',
