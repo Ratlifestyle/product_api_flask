@@ -1,0 +1,234 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "description": "products",
+        "version": "1.0.0",
+        "title": "products api",
+        "license": {
+            "name": "MIT",
+            "url": "https://opensource.org/licenses/MIT"
+        }
+    },
+    "servers": [
+        {
+            "url": "/"
+        }
+    ],
+    "paths": {
+        "/product": {
+            "get": {
+                "tags": [
+                    "Product requests"
+                ],
+                "summary": "return products",
+                "responses": {
+                    "200": {
+                        "description": "ok",
+                        "schema": {
+                            "$ref": "#/components/schemas/product"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Product requests"
+                ],
+                "summary": "create a new product",
+                "requestBody": {
+                    "description": "Product request post object",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/product"
+                            }
+                        }
+                    }
+                },
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "201": {
+                        "description": "ok",
+                        "schema": {
+                            "$ref": "#/components/schemas/product"
+                        }
+                    },
+                    "500": {
+                        "description": "Failed error occurred on server"
+                    }
+                }
+            }
+        },
+        "/product/{id}": {
+            "get": {
+                "tags": [
+                    "Product requests"
+                ],
+                "summary": "return a product",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "required": true,
+                        "description": "product request id",
+                        "schema": {
+                            "type": "number",
+                            "format": "number"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "ok",
+                        "schema": {
+                            "$ref": "#/components/schemas/product"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Product requests"
+                ],
+                "summary": "replace a product",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "required": true,
+                        "description": "product request id",
+                        "schema": {
+                            "type": "number",
+                            "format": "number"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "Product request put object",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/product"
+                            }
+                        }
+                    }
+                },
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "201": {
+                        "description": "ok",
+                        "schema": {
+                            "$ref": "#/components/schemas/product"
+                        }
+                    },
+                    "500": {
+                        "description": "Failed error occurred on server"
+                    }
+                }
+            },
+            "patch": {
+                "tags": [
+                    "Product requests"
+                ],
+                "summary": "update a product",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "required": true,
+                        "description": "product request id",
+                        "schema": {
+                            "type": "number",
+                            "format": "number"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "Product request patch object",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/product"
+                            }
+                        }
+                    }
+                },
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "201": {
+                        "description": "ok",
+                        "schema": {
+                            "$ref": "#/components/schemas/product"
+                        }
+                    },
+                    "500": {
+                        "description": "Failed error occurred on server"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Product requests"
+                ],
+                "summary": "delete a product by id",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "required": true,
+                        "description": "product request id",
+                        "schema": {
+                            "type": "number",
+                            "format": "number"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "ok",
+                        "schema": {
+                            "type": "number",
+                            "format": "number"
+                        }
+                    },
+                    "404": {
+                        "description": "Failed Product not found"
+                    },
+                    "500": {
+                        "description": "Failed error occurred on server"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "product": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "number"
+                    },
+                    "nom": {
+                        "type": "string",
+                        "format": "string"
+                    },
+                    "stock": {
+                        "type": "integer",
+                        "format": "number"
+                    }
+                }
+            }
+        }
+    }
+}
